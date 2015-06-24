@@ -1,0 +1,32 @@
+<div class="col-md-offset-2 col-md-8">
+	
+	<div class="well">
+		<button class="btn btn-sm btn-success" ng-click="adicionar()">Adiocionar</button>
+	</div>
+	
+
+	<table class="table">
+	    <thead>
+	      <tr>
+	        <th>Usuário</th>
+	        <th>Nome</th>
+	        <th>Sobrenome</th>
+	        <th>Endereço</th>
+	        <th>Ações</th>
+	      </tr>
+	    </thead>
+	    <tbody>
+	      <tr ng-repeat="usuario in usuarios">        
+	      	<td ng-bind="usuario.username"></td>
+	        <td ng-bind="usuario.first_name"></td>
+	        <td ng-bind="usuario.last_name"></td>
+	        <td ng-bind="usuario.address"></td>
+	        <td>
+	        	<button class="btn btn-sm btn-primary" ng-click="editar(usuario)">Editar</button>
+	        	<button class="btn btn-sm btn-danger" ng-click="excluir(usario)">Excluir</button>
+        	</td>
+	      </tr>      
+	    </tbody>
+	</table>
+
+</div>
