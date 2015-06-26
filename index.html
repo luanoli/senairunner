@@ -21,12 +21,14 @@
     <script src="js/controllers/UsuarioController.js"></script>   
     <script src="js/controllers/RunsController.js"></script>
     <script src="js/controllers/RunnersController.js"></script>
+    <script src="js/controllers/RunsEntryController.js"></script>
     <script src="js/controllers/ModalController.js"></script>
 
     <!--Models-->
 	<script src="js/models/Usuario.js"></script>
 	<script src="js/models/Runs.js"></script>
 	<script src="js/models/Runners.js"></script>
+        <script src="js/models/RunsEntry.js"></script>
 
 </head>
 <body ng-app="main">
@@ -35,6 +37,7 @@
 		<ul class="nav navbar-nav">
         	<li><a href="#/runs">Corridas</a></li>
         	<li><a href="#/runners">Corredores</a></li>
+                <li><a href="#/runsEntry">Inscrições</a></li>
 	</nav>
 	<div id="view" ng-view></div>	
 </body>

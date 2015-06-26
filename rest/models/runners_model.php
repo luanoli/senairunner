@@ -2,7 +2,7 @@
 
 namespace Models;
 
-use \Libs\Database\Db;
+use Libs\Database\Db;
 
 class Runners {
 

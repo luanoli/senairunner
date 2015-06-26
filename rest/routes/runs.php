@@ -31,12 +31,12 @@ $app->put('/runs/:id', function($id) use ($app) {
 
 //delete
 $app->delete('/runs/:id', function($id) use ($app) {
-	$status = Runs::delete($id);
-    if($status){
+    try{
+        Runs::delete($id);
         $app->response->setStatus(200);
-    }else{
+    }  catch (PDOException $e){
         $app->response->setStatus(304);   
-    }
+    }                
 });
 
 //insert

@@ -1,0 +1,29 @@
+<div class="col-md-offset-1 col-md-10">
+
+    <div class="well">
+            <button class="btn btn-sm btn-success" ng-click="insert()">Adiocionar</button>
+    </div>
+
+
+    <table class="table">
+        <thead>
+          <tr>
+            <th>Corrida</th>
+            <th>Corredor</th>
+            <th>Pago</th>	        
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="runEntry in runsEntry">        
+            <td ng-bind="runEntry.corrida"></td>
+            <td ng-bind="runEntry.corredor"></td>
+            <td ng-bind="runEntry.status_pagamento"></td>	       
+            <td>
+                <button class="btn btn-sm btn-primary" ng-click="update(runEntry)">Editar</button>                
+            </td>
+          </tr>      
+        </tbody>
+    </table>
+
+</div>

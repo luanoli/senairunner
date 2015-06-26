@@ -17,7 +17,7 @@ $app->get('/runners/:id', function($id) use ($app) {
 });
 
 //update
-$app->put('/runners/:id', function($id) use ($app) {	
+$app->put('/runners/:id', function($id) use ($app) {
 
     $runner = json_decode($app->request()->getBody());
     

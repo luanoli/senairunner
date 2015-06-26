@@ -35,6 +35,16 @@ angular.module('main', ['main.controllers', 'main.services', 'ui.bootstrap', 'ng
 		templateUrl: 'pages/runners/form.html',
 		controller: 'RunnersFormController'	
 
+        }).when('/runsEntry/',{
+		templateUrl: 'pages/runsEntry/list.html',
+		controller: 'RunsEntryController'
+	}).when('/runsEntry/insert',{
+		templateUrl: 'pages/runsEntry/form.html',
+		controller: 'RunsEntryFormController'
+	}).when('/runsEntry/update/:idRunEntry',{		
+		templateUrl: 'pages/runsEntry/form.html',
+		controller: 'RunsEntryFormController'
+
 	}).otherwise({redirectTo: '/runs'});
 
 	
