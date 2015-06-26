@@ -26,12 +26,15 @@ CREATE TABLE IF NOT EXISTS `corrida` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `inscricoes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `corredor` int(11) DEFAULT NULL,
   `corrida` int(11) DEFAULT NULL,
   `status_pagamento` tinyint(1) DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `corredor` (`corredor`,`corrida`),
   KEY `fk_corrida` (`corrida`),
-  KEY `fk_corredor` (`corredor`),
   CONSTRAINT `fk_corredor` FOREIGN KEY (`corredor`) REFERENCES `corredor` (`id`) ON DELETE CASCADE,
   CONSTRAINT `fk_corrida` FOREIGN KEY (`corrida`) REFERENCES `corrida` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
 
