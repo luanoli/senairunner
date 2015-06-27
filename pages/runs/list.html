@@ -1,38 +1,38 @@
 <div class="col-md-offset-1 col-md-10">
-	
-	<div class="well">
-		<button class="btn btn-sm btn-success" ng-click="insert()">Adiocionar</button>
-	</div>
-	
 
-	<table class="table">
-	    <thead>
-	      <tr>
-	        <th>Nome</th>
-	        <th>Data</th>
-	        <th>Descrição</th>
-	        <th>Cidade</th>
-	        <th>Estado</th>
-	        <th>Valor</th>	       
-	        <th>Status</th>
-	        <th>Ações</th>
-	      </tr>
-	    </thead>
-	    <tbody>
-	      <tr ng-repeat="run in runs">        
-	      	<td ng-bind="run.nome"></td>
-	        <td ng-bind="run.data"></td>
-	        <td ng-bind="run.descricao"></td>
-	        <td ng-bind="run.cidade"></td>
-	        <td ng-bind="run.estado"></td>
-	        <td ng-bind="run.valor_inscricao"></td>
-	        <td ng-bind="run.status"></td>
-	        <td>
-	        	<button class="btn btn-sm btn-primary" ng-click="update(run)">Editar</button>
-	        	<button class="btn btn-sm btn-danger" ng-click="delete(run)">Excluir</button>
-        	</td>
-	      </tr>      
-	    </tbody>
-	</table>
+    <div class="well">
+        <button class="btn btn-sm btn-success" ng-click="insert()">Adicionar</button>
+    </div>	
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Data</th>
+                <th>Descrição</th>
+                <th>Cidade</th>
+                <th>Estado</th>
+                <th>Valor</th>	       
+                <th>Inscrições</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="run in runs">        
+                <td ng-bind="run.nome"></td>
+                <td ng-bind="run.data | datapt"></td>
+                <td ng-bind="run.descricao"></td>
+                <td ng-bind="run.cidade"></td>
+                <td ng-bind="run.estado"></td>
+                <td ng-bind="run.valor_inscricao | moeda:2"></td>
+                <td ng-bind="run.status | inscricao"></td>
+                <td>
+                    <button class="btn btn-sm btn-default" ng-click="view(run)">Ver</button>
+                    <button class="btn btn-sm btn-primary" ng-click="update(run)">Editar</button>
+                    <button class="btn btn-sm btn-danger" ng-click="delete(run)">Excluir</button>
+                </td>
+            </tr>      
+        </tbody>
+    </table>
 
 </div>

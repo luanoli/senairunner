@@ -3,41 +3,57 @@
 
 	<form name="form">
 		
-		<div class="form-group has-feedback">
-            <label class="control-label">Nome:</label>
-            <div class="controls">
-                <input type="text" class="form-control" name="nome" ng-model="runner.nome" placeholder="Digite o nome" required>
-                <small class="has-error help-block" ng-show="form.nome.$error.required && form.nome.$dirty">Obrigatório</small>
+            <div class="form-group has-feedback">
+                <label class="control-label">Nome:</label>
+                <div class="controls">
+                    <input type="text" class="form-control" name="nome" ng-model="runner.nome" placeholder="Digite o nome" required>
+                    <small class="has-error help-block" ng-show="form.nome.$error.required && form.nome.$dirty">Obrigatório</small>
+                </div>
             </div>
-        </div>
 
-        <div class="form-group has-feedback">
-            <label class="control-label">Data de Nascimento:</label>
-            <div class="controls">
-                <input type="text" name="data_nasc" class="form-control" datepicker-popup="dd/MM/yyyy" ng-model="runner.data_nasc" is-open="opened" ng-click="open($event)" placeholder="Selecione a data de nascimento" required readonly>
-                <small class="has-error help-block" ng-show="form.data_nasc.$error.required && form.data_nasc.$dirty">Obrigatório</small>
+            <div class="form-group has-feedback">
+                <label class="control-label">Data de Nascimento:</label>
+                <div class="controls">
+                    <input type="text" name="data_nasc" class="form-control" datepicker-popup="dd/MM/yyyy" ng-model="runner.data_nasc" is-open="opened" ng-click="open($event)" placeholder="Selecione a data de nascimento" required readonly>
+                    <small class="has-error help-block" ng-show="form.data_nasc.$error.required && form.data_nasc.$dirty">Obrigatório</small>
+                </div>
+            </div>      
+
+            <div class="form-group has-feedback">
+                <label class="control-label">Cidade</label>
+                <div class="controls">
+                    <input type="text" name="cidade" class="form-control" ng-model="runner.cidade" placeholder="Digite a cidade" required>
+                    <small class="has-error help-block" ng-show="form.cidade.$error.required && form.cidade.$dirty">Obrigatório</small>
+                </div>
             </div>
-        </div>      
 
-        <div class="form-group has-feedback">
-            <label class="control-label">Cidade</label>
-            <div class="controls">
-                <input type="text" name="cidade" class="form-control" ng-model="runner.cidade" placeholder="Digite a cidade" required>
-                <small class="has-error help-block" ng-show="form.cidade.$error.required && form.cidade.$dirty">Obrigatório</small>
+            <div class="form-group has-feedback">
+                <label class="control-label">Estado</label>
+                <div class="controls">
+                    <select name="estado" class="form-control" ng-options="est for est in estados" ng-model="runner.estado" required>                        
+                    </select>
+                    <small class="has-error help-block" ng-show="form.estado.$error.required && form.estado.$dirty">Obrigatório</small>
+                </div>
             </div>
-        </div>
-
-        <div class="form-group has-feedback">
-            <label class="control-label">Estado</label>
-            <div class="controls">
-                <select name="estado" class="form-control" ng-options="est for est in estados" ng-model="runner.estado" placeholder="Selecione o estado" required>
-                </select>
-                <small class="has-error help-block" ng-show="form.estado.$error.required && form.estado.$dirty">Obrigatório</small>
+            
+            <div ng-if="id_runner != null" class="form-group has-feedback">
+                <label class="control-label">Status</label>
+                <div class="controls">                
+                    <div class="checkbox">
+                        <label>
+                            <input type="radio" ng-model="runner.status" ng-value="true">Sim
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="radio" ng-model="runner.status" ng-value="false">Não                      
+                        </label>
+                    </div>                                                               
+                </div>
             </div>
-        </div>
 
-        <button ng-disabled="form.$invalid" type="button" class="btn btn-sm btn-success" ng-click="save()">Salvar</button>
-        <button type="button" class="btn btn-sm btn-warning" ng-click="cancel()">Cancelar</button>
+            <button ng-disabled="form.$invalid" type="button" class="btn btn-sm btn-success" ng-click="save()">Salvar</button>
+            <button type="button" class="btn btn-sm btn-warning" ng-click="cancel()">Cancelar</button>
 
 	</form>
 

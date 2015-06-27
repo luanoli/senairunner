@@ -13,22 +13,12 @@ class RunsEntry {
         $sql .= "LEFT JOIN corrida ca ON i.corrida = ca.id ";
         
         return Db::select($sql);	
-    }
-
+    }   
+    
     public static function getById($id){
         $sql = "SELECT * FROM inscricoes WHERE id = " . $id;
         return Db::selectOne($sql);
-    }
-    
-    public static function getSeletorCorridas(){
-        $sql = "SELECT id,nome FROM corrida";
-        return Db::select($sql);
-    }
-
-    public static function getSeletorCorredores(){
-        $sql = "SELECT id,nome FROM corredor";
-        return Db::select($sql);
-    }
+    }  
     
     public static function insert($runEntry){                
         $sql = "INSERT INTO inscricoes (corrida, corredor, status_pagamento) VALUES ('" . 
@@ -52,14 +42,14 @@ class RunsEntry {
         }
     }
 
-//    public static function delete($id){
-//        $sql = "DELETE FROM inscricoes WHERE id = " . $id;
-//
-//        if(Db::execute($sql)){
-//            return true;
-//        }else{
-//            return false;
-//        }
-//    }
+    public static function delete($id){
+        $sql = "DELETE FROM inscricoes WHERE id = " . $id;
+
+        if(Db::execute($sql)){
+            return true;
+        }else{
+            return false;
+        }
+    }
     
 }

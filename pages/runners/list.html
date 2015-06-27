@@ -1,7 +1,7 @@
 <div class="col-md-offset-1 col-md-10">
 	
 	<div class="well">
-		<button class="btn btn-sm btn-success" ng-click="insert()">Adiocionar</button>
+		<button class="btn btn-sm btn-success" ng-click="insert()">Adicionar</button>
 	</div>
 	
 	<table class="table">
@@ -11,22 +11,23 @@
 	        <th>Data Nascimento</th>
 	        <th>Cidade</th>
 	        <th>Estado</th>	        
-	        <th>Status</th>
+	        <th>Ativo</th>
 	        <th>Ações</th>
 	      </tr>
 	    </thead>
 	    <tbody>
-	      <tr ng-repeat="runner in runners">        
+	      <tr ng-repeat="runner in runners">
 	      	<td ng-bind="runner.nome"></td>
-	        <td ng-bind="runner.data_nasc"></td>	        
+	        <td ng-bind="runner.data_nasc | datapt"></td>
 	        <td ng-bind="runner.cidade"></td>
-	        <td ng-bind="runner.estado"></td>	        
-	        <td ng-bind="runner.status"></td>
+	        <td ng-bind="runner.estado"></td>
+	        <td ng-bind="runner.status | ativo"></td>
 	        <td>
-	        	<button class="btn btn-sm btn-primary" ng-click="update(runner)">Editar</button>
-	        	<button class="btn btn-sm btn-danger" ng-click="delete(runner)">Excluir</button>
+                    <button class="btn btn-sm btn-default" ng-click="view(runner)">Ver</button>
+                    <button class="btn btn-sm btn-primary" ng-click="update(runner)">Editar</button>
+                    <button class="btn btn-sm btn-danger" ng-click="delete(runner)">Excluir</button>
         	</td>
-	      </tr>      
+	      </tr>
 	    </tbody>
 	</table>
 

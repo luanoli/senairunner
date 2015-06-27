@@ -50,6 +50,22 @@
                 <small class="has-error help-block" ng-show="form.valor_inscricao.$error.required && form.valor_inscricao.$dirty">Obrigatório</small>
             </div>
         </div>
+        
+        <div ng-if="id_run != null" class="form-group has-feedback">
+            <label class="control-label">Status</label>
+            <div class="controls">                
+                <div class="checkbox">
+                    <label>
+                        <input type="radio" ng-model="run.status" ng-value="true">Sim
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="radio" ng-model="run.status" ng-value="false">Não                      
+                    </label>
+                </div>                                                               
+            </div>
+        </div>
 
         <button ng-disabled="form.$invalid" type="button" class="btn btn-sm btn-success" ng-click="save()">Salvar</button>
         <button type="button" class="btn btn-sm btn-warning" ng-click="cancel()">Cancelar</button>

@@ -2,7 +2,7 @@
 
     angular.module('main.controllers').controller('RunsController', ['$scope', 'api', '$location', '$modal',
         function($scope, api, $location, $modal){
-            api.runs.list().success(function(data){
+            api.runs.list().success(function(data){                                                
                 $scope.runs = data;
             });
 
@@ -36,48 +36,52 @@
     }]);
 
     angular.module('main.controllers').controller('RunsFormController', ['$scope', 'api', '$location', '$routeParams',
-            function($scope, api, $location, $routeParams){
+        function($scope, api, $location, $routeParams){
 
-                    var id = $routeParams.idRun;
+            $scope.id_run = $routeParams.idRun;
 
-            if ( id != null && id > 0 ){
-                    $scope.title = "Editar Corrida";
-                            api.runs.get(id).success(function(data){
-                                    data.valor_inscricao = data.valor_inscricao * 1;
-                                    $scope.run = data;
-                            });
-                            $scope.save = function(){
-                                    api.runs.update($scope.run).success(function(){
-                                            $location.path('/runs');
-                                    }).error(function(data, headers, status){
-                                            console.log(headers + status);
-                                    });
-                            };
+            if ( $scope.id_run != null && $scope.id_run > 0 ){
+                $scope.title = "Editar Corrida";
+                api.runs.get($scope.id_run).success(function(data){
+                    data.valor_inscricao = data.valor_inscricao * 1;
+                    temp_data = data.data;
+                    dt = temp_data.split("-");      
+                    dt[1] = dt[1] - 1;
+                    data.data = new Date(dt[0],dt[1],dt[2]);
+                    $scope.run = data;
+                });
+                $scope.save = function(){
+                    api.runs.update($scope.run).success(function(){
+                        $location.path('/runs');
+                    }).error(function(data, headers, status){
+                        console.log(headers + status);                        
+                    });
+                };
             }else{
-                    $scope.title = "Inserir Corrida";
-                    $scope.run = new Runs();
+                $scope.title = "Inserir Corrida";
+                $scope.run = new Runs();
 
-                    $scope.save = function(){
-                                    api.runs.insert($scope.run).success(function(){
-                                            $location.path('/runs');
-                                    }).error(function(data, headers, status){
-                                            console.log(headers + status);
-                                    });					
-                            };
+                $scope.save = function(){
+                    api.runs.insert($scope.run).success(function(){
+                        $location.path('/runs');
+                    }).error(function(data, headers, status){
+                        console.log(headers + status);
+                    });					
+                };
             }
 
-                    $scope.estados = ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RO", "RS", "RR", "SC", "SE", "SP", "TO" ];
+            $scope.estados = ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RO", "RS", "RR", "SC", "SE", "SP", "TO" ];
 
-                    $scope.open = function($event) {
-                        $event.preventDefault();
-                        $event.stopPropagation();
+            $scope.open = function($event) {
+                $event.preventDefault();
+                $event.stopPropagation();
 
-                        $scope.opened = true;
-                    };
+                $scope.opened = true;
+            };
 
-                    $scope.cancel = function(){
-                            $location.path('/runs');
-                    };
+            $scope.cancel = function(){
+                    $location.path('/runs');
+            };
     }]);
 
 }).call(this);

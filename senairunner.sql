@@ -1,9 +1,10 @@
+
 CREATE DATABASE IF NOT EXISTS `senairunner`;
 USE `senairunner`;
 
 CREATE TABLE IF NOT EXISTS `corredor` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nome` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `nome` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `data_nasc` date NOT NULL,
   `cidade` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `estado` char(2) COLLATE utf8_unicode_ci NOT NULL,
@@ -19,7 +20,7 @@ CREATE TABLE IF NOT EXISTS `corrida` (
   `descricao` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `cidade` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `valor_inscricao` double NOT NULL,
-  `estado` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `estado` char(2) COLLATE utf8_unicode_ci NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT '1',
   `data_cadastro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
@@ -36,5 +37,3 @@ CREATE TABLE IF NOT EXISTS `inscricoes` (
   CONSTRAINT `fk_corredor` FOREIGN KEY (`corredor`) REFERENCES `corredor` (`id`) ON DELETE CASCADE,
   CONSTRAINT `fk_corrida` FOREIGN KEY (`corrida`) REFERENCES `corrida` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
-

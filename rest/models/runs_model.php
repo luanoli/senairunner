@@ -15,6 +15,14 @@ class Runs {
         $sql = "SELECT * FROM corrida WHERE id = " . $id;
         return Db::selectOne($sql);
     }
+    
+    public static function getRunnersByRun($id){
+        $sql = "SELECT co.* FROM inscricoes i ";
+        $sql .= "LEFT JOIN corredor co ON i.corredor = co.id ";
+        $sql .= "WHERE i.corrida = " . $id;        
+        
+        return Db::select($sql);
+    }
 
     public static function insert($run){
         $sql = "INSERT INTO corrida (nome, data, descricao, cidade, estado, valor_inscricao) VALUES ('" . 
@@ -28,14 +36,18 @@ class Runs {
         Db::execute($sql);
     }
 
-    public static function update($run){    
+    public static function update($run){   
+        
+        $run->status = empty($run->status) ? "false" : "true";
+        
         $sql = "UPDATE corrida SET " .
                 "nome = '" . $run->nome . "', " .
                 "data = '" . $run->data . "', " .
                 "descricao = '" . $run->descricao . "', " .
                 "cidade = '" . $run->cidade . "', " .
                 "estado = '" . $run->estado . "', " .
-                "valor_inscricao = " . $run->valor_inscricao .
+                "valor_inscricao = " . $run->valor_inscricao . ", " .
+                "status = " . $run->status .
                 " WHERE id = " . $run->id;
         
         if(Db::execute($sql)){

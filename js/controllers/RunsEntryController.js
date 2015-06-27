@@ -31,11 +31,11 @@
                 $scope.runners = data;
             });
             
-            var id = $routeParams.idRunEntry;
+            $scope.id_run_entry = $routeParams.idRunEntry;
 
-            if ( id != null && id > 0 ){
+            if ( $scope.id_run_entry != null && $scope.id_run_entry > 0 ){
                 $scope.title = "Editar Inscrição";
-                    api.runsEntry.get(id).success(function(data){                            
+                    api.runsEntry.get($scope.id_run_entry).success(function(data){                            
                         $scope.runEntry = data;
                     });
                     $scope.save = function(){

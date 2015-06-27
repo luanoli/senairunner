@@ -2,8 +2,9 @@
 
 angular.module('main.controllers', []);
 angular.module('main.services', []);
+angular.module('main.filters', []);
 
-angular.module('main', ['main.controllers', 'main.services', 'ui.bootstrap', 'ngRoute']).config(['$routeProvider',function($routeProvider) {
+angular.module('main', ['main.controllers', 'main.services', 'main.filters', 'ui.bootstrap', 'ngRoute']).config(['$routeProvider',function($routeProvider) {
 	
 	$routeProvider.when('/usuario/',{
 		templateUrl: 'pages/usuario/list.html',

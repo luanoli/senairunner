@@ -5,15 +5,32 @@ include("./models/runners_model.php");
 use \Models\Runners;
 
 //get all
-$app->get('/runners', function() use ($app) {
-    $runners = Runners::getAll();
-    echo json_encode($runners);
+$app->get('/runners', function() use ($app) {    
+        $runners = Runners::getAll();
+        echo json_encode($runners);    
 });
 
 //get by id
 $app->get('/runners/:id', function($id) use ($app) {    
-    $runner = Runners::getById($id);
-    echo json_encode($runner);
+    try{
+        $runner = Runners::getById($id);
+        echo json_encode($runner);
+    }  catch (PDOException $e){
+        $app->responde->setStatus(404);
+    }
+});
+
+//get by id and all runners of run
+$app->get('/runners/:id/runs', function($id) use ($app) {    
+    try{
+        $runner = Runners::getById($id);
+        $runs = Runners::getRunsByRunner($id);
+        $info['runner'] = $runner;
+        $info['runs'] = $runs;
+        echo json_encode($info);
+    }  catch (PDOException $e){
+        $app->responde->setStatus(404);
+    }
 });
 
 //update

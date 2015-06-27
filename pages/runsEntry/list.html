@@ -1,9 +1,8 @@
 <div class="col-md-offset-1 col-md-10">
 
     <div class="well">
-            <button class="btn btn-sm btn-success" ng-click="insert()">Adiocionar</button>
+        <button class="btn btn-sm btn-success" ng-click="insert()">Adicionar</button>
     </div>
-
 
     <table class="table">
         <thead>
@@ -18,9 +17,9 @@
           <tr ng-repeat="runEntry in runsEntry">        
             <td ng-bind="runEntry.corrida"></td>
             <td ng-bind="runEntry.corredor"></td>
-            <td ng-bind="runEntry.status_pagamento"></td>	       
+            <td ng-bind="runEntry.status_pagamento | ativo"></td>	       
             <td>
-                <button class="btn btn-sm btn-primary" ng-click="update(runEntry)">Editar</button>                
+                <button class="btn btn-sm btn-primary" ng-click="update(runEntry)" ng-if="runEntry.status_pagamento == 0">Editar</button>                
             </td>
           </tr>      
         </tbody>

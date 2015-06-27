@@ -25,11 +25,11 @@
         <div class="form-group has-feedback">
             <label class="control-label">Pago</label>
             <div class="controls">
-                <select name="status_pagamento" class="form-control" ng-model="runEntry.status_pagamento">
+                <select name="status_pagamento" class="form-control" ng-model="runEntry.status_pagamento" required>
                     <option value="1">Sim</option>
                     <option value="0">Não</option>
                 </select>
-                
+                <small class="has-error help-block" ng-show="form.status_pagamento.$error.required && form.status_pagamento.$dirty">Obrigatório</small>
             </div>
         </div>
 

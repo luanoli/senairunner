@@ -11,9 +11,26 @@ $app->get('/runs', function() use ($app) {
 });
 
 //get by id
-$app->get('/runs/:id', function($id) use ($app) {    
-    $run = Runs::getById($id);
-    echo json_encode($run);
+$app->get('/runs/:id', function($id) use ($app) {
+    try{
+        $run = Runs::getById($id);
+        echo json_encode($run);
+    }catch (PDOException $e){
+        $app->response->setStatus(404);
+    }
+});
+
+//get by id and all runners of run
+$app->get('/runs/:id/runners', function($id) use ($app) {    
+    try{
+        $run = Runs::getById($id);
+        $runners = Runs::getRunnersByRun($id);
+        $info['run'] = $run;
+        $info['runners'] = $runners;
+        echo json_encode($info);
+    }  catch (PDOException $e){
+        $app->responde->setStatus(404);
+    }
 });
 
 //update
