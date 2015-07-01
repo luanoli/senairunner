@@ -6,13 +6,19 @@ use Models\RunsEntry;
 
 //get all
 $app->get('/runsEntry', function() use ($app) {
-    $runsEntry = RunsEntry::getAll();            
+    $runsEntry = RunsEntry::getAll();
+    
+    $app->response()->header("Content-Type", "application/json");
+    
     echo json_encode($runsEntry);
 });
 
 //get by id
 $app->get('/runsEntry/:id', function($id) use ($app) {    
     $runEntry = RunsEntry::getById($id);
+    
+    $app->response()->header("Content-Type", "application/json");
+    
     echo json_encode($runEntry);
 });
 
@@ -49,6 +55,5 @@ $app->post('/runsEntry', function() use ($app) {
     }  catch (PDOException $e){
         $app->response->setStatus(304);  
     }
-    
-  
+      
 });

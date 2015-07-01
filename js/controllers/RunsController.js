@@ -13,6 +13,10 @@
             $scope.update = function(run){
                 $location.path('/runs/update/' + run.id);
             };
+            
+            $scope.view = function(run){                
+                $location.path('/runs/' + run.id + '/runners');
+            };
 
             $scope.delete = function(run){
                 var modalInstance = $modal.open({
@@ -84,4 +88,22 @@
             };
     }]);
 
+    angular.module('main.controllers').controller('RunsDetailController', ['$scope', 'api', '$location', '$routeParams',
+        function($scope, api, $location, $routeParams){            
+            
+            $scope.id_run = $routeParams.idRun;            
+            
+            api.runs.view($scope.id_run).success(function(data){
+                $scope.run = data.run;
+                $scope.runners = data.runners;
+            });
+            
+            $scope.list = function(){
+                $location.path('/runs');
+            };		
+    }]);
+
 }).call(this);
+
+
+

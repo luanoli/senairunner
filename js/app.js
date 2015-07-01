@@ -25,7 +25,10 @@ angular.module('main', ['main.controllers', 'main.services', 'main.filters', 'ui
 	}).when('/runs/update/:idRun',{		
 		templateUrl: 'pages/runs/form.html',
 		controller: 'RunsFormController'
-
+        }).when('/runs/:idRun/runners',{                
+                templateUrl: 'pages/runs/detail.html',
+                controller: 'RunsDetailController'
+                
 	}).when('/runners/',{
 		templateUrl: 'pages/runners/list.html',
 		controller: 'RunnersController'

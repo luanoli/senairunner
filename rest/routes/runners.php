@@ -6,15 +6,19 @@ use \Models\Runners;
 
 //get all
 $app->get('/runners', function() use ($app) {    
-        $runners = Runners::getAll();
-        echo json_encode($runners);    
+    $runners = Runners::getAll();
+    $app->response()->header("Content-Type", "application/json");
+    echo json_encode($runners);    
 });
 
 //get by id
 $app->get('/runners/:id', function($id) use ($app) {    
     try{
         $runner = Runners::getById($id);
+        $app->response()->header("Content-Type", "application/json");
+        
         echo json_encode($runner);
+        
     }  catch (PDOException $e){
         $app->responde->setStatus(404);
     }
@@ -27,7 +31,11 @@ $app->get('/runners/:id/runs', function($id) use ($app) {
         $runs = Runners::getRunsByRunner($id);
         $info['runner'] = $runner;
         $info['runs'] = $runs;
+        
+        $app->response()->header("Content-Type", "application/json");
+        
         echo json_encode($info);
+        
     }  catch (PDOException $e){
         $app->responde->setStatus(404);
     }

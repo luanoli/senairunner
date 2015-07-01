@@ -29,6 +29,9 @@
                 },
                 delete:  function(id){
                     return $http.delete('rest/index.php/runs/' + id);
+                },
+                view: function(id){
+                    return $http.get('rest/index.php/runs/' + id + '/runners');
                 }
             },
             runners: {
