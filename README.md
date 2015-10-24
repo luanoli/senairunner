@@ -10,17 +10,6 @@
 </h1>
 
 <br>
-    
-<h2>Equipe</h2>
-<ul>
-<li>Luan Macedo de Oliveira</li>
-<li>Lucas Dal Grande Ghizoni</li>
-<li>Sergio Faraco</li>
-<li>João Clayton</li>
-</ul>
-
-<h2>Repositório</h2>
-<a href="https://github.com/luanoli/senairunner">https://github.com/luanoli/senairunner</a><br><br>
 
 <h2>Modelo de dados</h2>
 <p align="center"><img src="senairunner.png" name="figura" align="bottom" border="0" height="210" width="650">
